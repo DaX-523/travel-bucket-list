@@ -1,15 +1,17 @@
-import styles from "./container.module.scss";
+import styles from './Container.module.scss';
 
 const Container = ({ children, className, ...rest }) => {
-  let containerClass = styles.container;
+  let containerClassName = styles.container;
+
   if (className) {
-    containerClass += ` ${className}`;
+    containerClassName = `${containerClassName} ${className}`;
   }
-  let containerProps = {
-    className,
-    ...rest,
-  };
-  return <div {...containerProps}>{children}</div>;
+
+  return (
+    <div className={containerClassName} {...rest}>
+      {children}
+    </div>
+  );
 };
 
 export default Container;

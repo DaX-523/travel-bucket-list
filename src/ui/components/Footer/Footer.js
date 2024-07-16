@@ -1,12 +1,12 @@
 import Container from "../Container";
-import styles from "./footer.module.scss";
+import styles from "./Footer.module.scss";
 
 const Footer = ({ ...rest }) => {
   return (
     <footer className={styles.footer} {...rest}>
       <Container className={`${styles.footerContainer} ${styles.footerLegal}`}>
         <p>
-          &copy; <a href="https://spacejelly.dev">Travel Bucket List</a>,{" "}
+          &copy; <a href="https://spacejelly.dev">Next.js Leaflet Starter</a>,{" "}
           {new Date().getFullYear()}
         </p>
       </Container>
