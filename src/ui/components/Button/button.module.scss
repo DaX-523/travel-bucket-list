@@ -1,0 +1,28 @@
+@import "../../../styles/variables";
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 1.4em;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.2em;
+  cursor: pointer;
+  background-color: $color-green;
+  &:hover {
+    background-color: darken($color-green, 10);
+  }
+
+  &:disabled {
+    color: rgba(white, 0.5);
+    background-color: lighten($color-green, 10);
+    cursor: default;
+    opacity: 0.6;
+  }
+}
