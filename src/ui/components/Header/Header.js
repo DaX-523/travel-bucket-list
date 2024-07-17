@@ -9,12 +9,12 @@ const Header = () => {
     <header className={styles.header}>
       <Container className={styles.headerContainer}>
         <p className={styles.headerTitle}>
-          <Link href="/">Next.js Leaflet Starter</Link>
+          <Link href="/">Travel Bucket List</Link>
         </p>
         <ul className={styles.headerLinks}>
           <li>
             <a
-              href="https://github.com/colbyfayock/next-leaflet-starter"
+              href="https://github.com/DaX-523/travel-bucket-list"
               rel="noreferrer"
             >
               <FaGithub />

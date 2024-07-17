@@ -6,24 +6,22 @@ import Section from "@/ui/components/Section";
 import Container from "@/ui/components/Container";
 import Map from "@/ui/components/Map";
 import Button from "@/ui/components/Button";
+import BucketList from "@/ui/components/BucketList";
 
 const DEFAULT_CENTER = [38.907132, -77.036546];
 
-export default function Home() {
+export default function Home({ destinations }) {
   return (
     <Layout>
       <Head>
-        <title>Next.js Leaflet Starter</title>
-        <meta
-          name="description"
-          content="Create mapping apps with Next.js Leaflet Starter"
-        />
+        <title>Travel Bucket List</title>
+        <meta name="description" content="Travel Bucket List" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Section>
         <Container>
-          <h1 className={styles.title}>Next.js Leaflet Starter</h1>
+          <h1 className={styles.title}>Travel Bucket List</h1>
 
           <Map
             className={styles.homeMap}
@@ -34,10 +32,16 @@ export default function Home() {
           ></Map>
 
           <p className={styles.view}>
-            <Button href="https://github.com/colbyfayock/next-leaflet-starter">
+            <Button href="https://github.com/DaX-523/travel-bucket-list">
               Vew on GitHub
             </Button>
           </p>
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <h2>Destinations</h2>
+          <BucketList />
         </Container>
       </Section>
     </Layout>

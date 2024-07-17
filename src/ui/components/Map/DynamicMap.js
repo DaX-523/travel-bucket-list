@@ -1,16 +1,18 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Leaflet from "leaflet";
 import * as ReactLeaflet from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 import styles from "./Map.module.scss";
+import fetchData from "@/utils/fetchData";
 
 const { MapContainer, TileLayer, Marker, Popup } = ReactLeaflet;
 const DEFAULT_CENTER = [38.907132, -77.036546];
 
 const Map = ({ children, className, width, height, ...rest }) => {
   let mapClassName = styles.map;
+  const [destinations, setDestinations] = useState([]);
 
   if (className) {
     mapClassName = `${mapClassName} ${className}`;
@@ -25,6 +27,13 @@ const Map = ({ children, className, width, height, ...rest }) => {
         shadowUrl: "leaflet/images/marker-shadow.png",
       });
     })();
+    fetchData()
+      .then((data) => {
+        setDestinations(data.destinations);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   return (
@@ -33,11 +42,11 @@ const Map = ({ children, className, width, height, ...rest }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={DEFAULT_CENTER}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      {destinations?.map(({ id, name, location }) => (
+        <Marker position={[location.latitude, location.longitude]} key={id}>
+          <Popup>{name}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 };
